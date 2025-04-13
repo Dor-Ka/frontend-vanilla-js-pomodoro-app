@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeButton = document.querySelector('.pomodoro__button--theme');
     const body = document.body;
     const pomodoroContainer = document.querySelector('.pomodoro');
+    timeDisplay.classList.remove('pomodoro__time--expired');
+
 
     let isRunning = false;
     let timerInterval = null;
@@ -18,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
             isRunning = false;
             clearInterval(timerInterval);
             updateDisplay();
+            timeDisplay.classList.remove('pomodoro__time--expired');
             startButton.textContent = 'Start';
-            timeDisplay.style.color = '#000';
             alarmSound.pause();
             alarmSound.currentTime = 0;
             saveToLocalStorage();
@@ -99,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     clearInterval(timerInterval);
                     alarmSound.play();
                     timeDisplay.textContent = "Time's up!";
-                    timeDisplay.style.color = '#ff0000';
+                    timeDisplay.classList.add('pomodoro__time--expired');
                 }
             }, 1000);
             startButton.textContent = 'Stop';
@@ -114,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timerInterval);
         timeLeft = 25 * 60;
         timeDisplay.textContent = formatTime(timeLeft);
-        timeDisplay.style.color = '#000';
+        timeDisplay.classList.remove('pomodoro__time--expired');
         startButton.textContent = 'Start';
         isRunning = false;
         localStorage.clear();
@@ -127,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     loadFromLocalStorage();
     updateDisplay();
+    timeDisplay.classList.remove('pomodoro__time--expired');
 
     if (isRunning && timeLeft > 0) {
         toggleTimer();

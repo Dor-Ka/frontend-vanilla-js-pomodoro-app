@@ -75,6 +75,10 @@ body {
     border-radius: 5px;
 }
 
+.pomodoro__time--expired {
+    color: #ff0000;
+}
+
 body.dark-theme {
     background-color: #1e1e1e;
     color: #f1f1f1;
@@ -102,4 +106,19 @@ body.dark-theme .pomodoro {
 
 .pomodoro__button--theme:active {
     transform: scale(1.0);
+}
+
+body.dark-theme .pomodoro__time-options button {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+body.dark-theme .pomodoro__time-options button:hover {
+    background-color: #444;
+    border-color: #777;
+}
+
+body.dark-theme .pomodoro__time--expired {
+    color: #ff4f4f;
 }
