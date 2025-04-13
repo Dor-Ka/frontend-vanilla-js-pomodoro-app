@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const pomodoroContainer = document.querySelector('.pomodoro');
 
-    // let timeLeft = 25 * 60;
     let isRunning = false;
     let timerInterval = null;
 
