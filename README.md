@@ -37,6 +37,10 @@ Check out the live demo: [Pomodoro App Demo](https://dor-ka.github.io/frontend-v
 ### v0.3
 - Implement dark mode with toggle button.
 - Save user theme preference in localStorage.
+- Improve alarm Sound Control
+  - Added ability to stop alarm sound when user starts or resets the timer
+  - Clicking anywhere on the Pomodoro container also stops the alarm
+  - Improved UX by resetting alarm playback state (pause and rewind)
 
 ## Future Versions
 ### v0.4
