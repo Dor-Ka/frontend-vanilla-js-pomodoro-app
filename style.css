@@ -13,7 +13,6 @@ body {
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
-    transition: background-color 0.3s, color 0.3s;
 }
 
 .pomodoro {
@@ -22,7 +21,6 @@ body {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .pomodoro__title {
@@ -42,7 +40,6 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
 }
 
 .pomodoro__button--start {

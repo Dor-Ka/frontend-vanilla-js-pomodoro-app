@@ -23,6 +23,7 @@ Check out the live demo: [Pomodoro App Demo](https://dor-ka.github.io/frontend-v
 - Click **Start** to begin a 25-minute session.
 - Click **Stop** to pause the timer.
 - Click **Reset** to reset the timer back to 25 minutes.
+- Click the **theme toggle button** to switch between light and dark themes.
 
 ### v0.1
 - Timer (25 minutes work, with start, stop, and reset functionality)
@@ -33,10 +34,11 @@ Check out the live demo: [Pomodoro App Demo](https://dor-ka.github.io/frontend-v
 - Alarm sound when the 25-minute session ends
 - Preserve timer state using localStorage (survive page refresh).
 
-## Future Versions
 ### v0.3
-- Implement dark mode for better accessibility.
+- Implement dark mode with toggle button.
+- Save user theme preference in localStorage.
 
+## Future Versions
 ### v0.4
 - Add notification feature for when the session ends (browser notification).
 
