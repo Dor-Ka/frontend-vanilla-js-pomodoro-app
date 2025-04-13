@@ -42,8 +42,13 @@ Check out the live demo: [Pomodoro App Demo](https://dor-ka.github.io/frontend-v
   - Clicking anywhere on the Pomodoro container also stops the alarm
   - Improved UX by resetting alarm playback state (pause and rewind)
 
-## Future Versions
 ### v0.4
+- Add customizable session length with buttons (1, 5, 25, 60 min)
+- Allow quick switching between session lengths
+- Improve UI and UX for better flexibility
+
+## Future Versions
+### v0.5
 - Add notification feature for when the session ends (browser notification).
 
 ## License
