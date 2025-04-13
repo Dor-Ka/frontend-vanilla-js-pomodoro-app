@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const timeDisplay = document.querySelector('.pomodoro__time');
     const startButton = document.querySelector('.pomodoro__button--start');
     const resetButton = document.querySelector('.pomodoro__button--reset');
+    const themeButton = document.querySelector('.pomodoro__button--theme');
+    const body = document.body;
+    const pomodoroContainer = document.querySelector('.pomodoro');
 
     let timeLeft = 25 * 60;
     let isRunning = false;
@@ -13,8 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const alarmSound = new Audio('/sounds/alarm-ring.mp3');
     alarmSound.preload = 'auto';
 
-    const themeButton = document.querySelector('.pomodoro__button--theme');
-    const body = document.body;
+    const stopAlarm = () => {
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
+    };
 
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -63,6 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const toggleTimer = () => {
+        stopAlarm();
+
         if (isRunning) {
             clearInterval(timerInterval);
             startButton.textContent = 'Start';
@@ -70,32 +77,34 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             timerInterval = setInterval(() => {
                 timeLeft--;
-                updateDisplay();
-                saveToLocalStorage();
+                timeDisplay.textContent = formatTime(timeLeft);
 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     alarmSound.play();
-                    alert('Pomodoro session complete!');
-                    localStorage.clear();
+                    timeDisplay.textContent = "Time's up!";
+                    timeDisplay.style.color = '#ff0000';
                 }
             }, 1000);
             startButton.textContent = 'Stop';
             startStopSound.play();
         }
-
         isRunning = !isRunning;
         saveToLocalStorage();
     };
 
     const resetTimer = () => {
+        stopAlarm();
         clearInterval(timerInterval);
         timeLeft = 25 * 60;
-        isRunning = false;
+        timeDisplay.textContent = formatTime(timeLeft);
+        timeDisplay.style.color = '#000';
         startButton.textContent = 'Start';
-        updateDisplay();
+        isRunning = false;
         localStorage.clear();
     };
+
+    pomodoroContainer.addEventListener('click', stopAlarm);
 
     startButton.addEventListener('click', toggleTimer);
     resetButton.addEventListener('click', resetTimer);
