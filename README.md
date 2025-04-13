@@ -12,7 +12,7 @@ A simple Pomodoro Timer App built with Vanilla JS to boost productivity by helpi
 Check out the live demo: [Pomodoro App Demo](https://dor-ka.github.io/frontend-vanilla-js-pomodoro-app/)
 
 ## Screenshots
-![Pomodoro App Screenshot](path_to_screenshot.jpg) (coming soon)
+![Pomodoro App Screenshot](img/screenshot.png)
 
 ## Features
 ## Installation
