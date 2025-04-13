@@ -28,10 +28,12 @@ Check out the live demo: [Pomodoro App Demo](https://dor-ka.github.io/frontend-v
 - Timer (25 minutes work, with start, stop, and reset functionality)
 - Simple and clean user interface
 
-## Future Versions
 ### v0.2
-- Add sound feedback for start/stop and alarm after 25 minutes.
+- Sound feedback when timer starts and stops
+- Alarm sound when the 25-minute session ends
+- Preserve timer state using localStorage (survive page refresh).
 
+## Future Versions
 ### v0.3
 - Implement dark mode for better accessibility.
 
