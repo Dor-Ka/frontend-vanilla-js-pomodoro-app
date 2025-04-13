@@ -6,9 +6,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const pomodoroContainer = document.querySelector('.pomodoro');
 
-    let timeLeft = 25 * 60;
+    // let timeLeft = 25 * 60;
     let isRunning = false;
     let timerInterval = null;
+
+    const timeOptionButtons = document.querySelectorAll('.pomodoro__time-options button');
+
+    timeOptionButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const minutes = parseInt(button.dataset.time, 10);
+            timeLeft = minutes * 60;
+            isRunning = false;
+            clearInterval(timerInterval);
+            updateDisplay();
+            startButton.textContent = 'Start';
+            timeDisplay.style.color = '#000';
+            alarmSound.pause();
+            alarmSound.currentTime = 0;
+            saveToLocalStorage();
+        });
+    });
 
     const startStopSound = new Audio('/sounds/start-stop.mp3');
     startStopSound.preload = 'auto';

@@ -60,6 +60,21 @@ body {
     background-color: #e53935;
 }
 
+.pomodoro__time-options {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.pomodoro__time-options button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
 body.dark-theme {
     background-color: #1e1e1e;
     color: #f1f1f1;
