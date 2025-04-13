@@ -20,6 +20,34 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
     };
 
+    const saveToLocalStorage = () => {
+        localStorage.setItem('pomodoro-timeLeft', timeLeft);
+        localStorage.setItem('pomodoro-isRunning', isRunning);
+        if (isRunning) {
+            localStorage.setItem('pomodoro-lastUpdate', Date.now());
+        }
+    };
+
+    const loadFromLocalStorage = () => {
+        const savedTimeLeft = localStorage.getItem('pomodoro-timeLeft');
+        const savedIsRunning = localStorage.getItem('pomodoro-isRunning');
+        const savedLastUpdate = localStorage.getItem('pomodoro-lastUpdate');
+
+        if (savedTimeLeft && savedIsRunning) {
+            timeLeft = parseInt(savedTimeLeft, 10);
+            isRunning = savedIsRunning === 'true';
+
+            if (isRunning && savedLastUpdate) {
+                const timeElapsed = Math.floor((Date.now() - savedLastUpdate) / 1000);
+                timeLeft = Math.max(0, timeLeft - timeElapsed);
+            }
+        }
+    };
+
+    const updateDisplay = () => {
+        timeDisplay.textContent = formatTime(timeLeft);
+    };
+
     const toggleTimer = () => {
         if (isRunning) {
             clearInterval(timerInterval);
@@ -28,30 +56,40 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             timerInterval = setInterval(() => {
                 timeLeft--;
-                timeDisplay.textContent = formatTime(timeLeft);
+                updateDisplay();
+                saveToLocalStorage();
 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     alarmSound.play();
                     alert('Pomodoro session complete!');
+                    localStorage.clear();
                 }
             }, 1000);
             startButton.textContent = 'Stop';
             startStopSound.play();
         }
+
         isRunning = !isRunning;
+        saveToLocalStorage();
     };
 
     const resetTimer = () => {
         clearInterval(timerInterval);
         timeLeft = 25 * 60;
-        timeDisplay.textContent = formatTime(timeLeft);
-        startButton.textContent = 'Start';
         isRunning = false;
+        startButton.textContent = 'Start';
+        updateDisplay();
+        localStorage.clear();
     };
 
     startButton.addEventListener('click', toggleTimer);
     resetButton.addEventListener('click', resetTimer);
 
-    timeDisplay.textContent = formatTime(timeLeft);
+    loadFromLocalStorage();
+    updateDisplay();
+
+    if (isRunning && timeLeft > 0) {
+        toggleTimer();
+    }
 });
