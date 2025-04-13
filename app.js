@@ -7,6 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let isRunning = false;
     let timerInterval = null;
 
+    const startStopSound = new Audio('/sounds/start-stop.mp3');
+    startStopSound.preload = 'auto';
+
+    const alarmSound = new Audio('/sounds/alarm-ring.mp3');
+    alarmSound.preload = 'auto';
+
+
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = seconds % 60;
@@ -17,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isRunning) {
             clearInterval(timerInterval);
             startButton.textContent = 'Start';
+            startStopSound.play();
         } else {
             timerInterval = setInterval(() => {
                 timeLeft--;
@@ -24,10 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
+                    alarmSound.play();
                     alert('Pomodoro session complete!');
                 }
             }, 1000);
             startButton.textContent = 'Stop';
+            startStopSound.play();
         }
         isRunning = !isRunning;
     };
