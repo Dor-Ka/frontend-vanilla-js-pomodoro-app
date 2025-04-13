@@ -13,6 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const alarmSound = new Audio('/sounds/alarm-ring.mp3');
     alarmSound.preload = 'auto';
 
+    const themeButton = document.querySelector('.pomodoro__button--theme');
+    const body = document.body;
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+        themeButton.textContent = '🌞';
+    }
+
+    themeButton.addEventListener('click', () => {
+        const isDark = body.classList.toggle('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        themeButton.textContent = isDark ? '🌞' : '🌙';
+    });
 
     const formatTime = (seconds) => {
         const minutes = Math.floor(seconds / 60);
