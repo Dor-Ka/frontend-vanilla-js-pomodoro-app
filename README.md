@@ -46,6 +46,11 @@ Check out the live demo: [Pomodoro App Demo](https://dor-ka.github.io/frontend-v
 - Add customizable session length with buttons (1, 5, 25, 60 min)
 - Allow quick switching between session lengths
 - Improve UI and UX for better flexibility
+- Added favicon for the app.
+- Added Open Graph meta tags for better social media sharing (Facebook, LinkedIn, etc.).
+- Added Twitter Card meta tags for improved presentation on Twitter.
+- Added basic SEO meta tags (description, keywords, and robots).
+- Configured meta viewport for better responsiveness on mobile devices.
 
 ## License
 This project is licensed under the MIT License.
