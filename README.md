@@ -1,4 +1,4 @@
-# Pomodoro App
+# Pomodoro App (Vanilla JS)
 
 A simple Pomodoro Timer App built with Vanilla JS to boost productivity by helping users stay focused.
 
