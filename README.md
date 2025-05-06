@@ -1,8 +1,5 @@
 # Pomodoro App (Vanilla JS)
 
-[![Build Status](https://img.shields.io/github/workflow/status/Dor-Ka/frontend-vanilla-js-pomodoro-app/CI)](https://github.com/Dor-Ka/frontend-vanilla-js-pomodoro-app/actions)
-[![Deploy Status](https://img.shields.io/website?url=https%3A%2F%2Fdor-ka.github.io/frontend-vanilla-js-pomodoro-app)](https://dor-ka.github.io/frontend-vanilla-js-pomodoro-app)
-
 A simple Pomodoro Timer App built with Vanilla JS to boost productivity by helping users stay focused.
 
 ## Technologies Used
